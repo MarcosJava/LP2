@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:composite="http://java.sun.com/jsf/composite"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+
+    <meta charset="utf-8"/>
+
+    <title>Login</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../resources/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- MetisMenu CSS -->
+    <link href="../resources/css/metisMenu.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link href="../resources/css/sb-admin-2.css" rel="stylesheet"/>
+
+    <!-- Custom Fonts -->
+    <link href="../resources/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+
+</h:head>
+
+<h:body>
+	<h:form>
+	
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="login-panel panel panel-default">
+                    <div class="panel-heading">
+                       <center> <h3 class="panel-title" style="font-size: 13px; font-weight: bold;">AUTENTICAÇÃO DE USUÁRIO</h3> </center>
+                    </div>
+                    <div class="panel-body">
+                                <div class="form-group">
+                                	<p:watermark for="login" value="Login"/>
+                                	<h:inputText id="login" value="" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <p:watermark for="senha" value="Senha"/>
+                                    <h:inputText id="senha" value="" class="form-control"/>
+                                </div>
+                             
+                             	<!--  <div class="checkbox">
+                                    <label>
+                                        <input name="remember" type="checkbox" value="Remember Me"/>Mantenha-me conectado
+                                    </label>
+                                </div>  -->
+                                
+                                <span style="font-size: 9pt;"> Não possui cadastro?</span>
+                                <h:commandLink >
+                                	<span style="font-size: 8pt;"> Inscreva-se </span>
+                                </h:commandLink>
+                                                                
+                                <h:commandLink class="btn btn-lg btn-success btn-block" style="margin-top: 5px;"> Entrar </h:commandLink>                                
+                                                            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+	</h:form>
+
+
+	
+</h:body>
+
+</html>

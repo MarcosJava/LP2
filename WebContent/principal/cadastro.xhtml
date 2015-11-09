@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template ="/WEB-INF/templates/template-principal.xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:composite="http://java.sun.com/jsf/composite"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+
+    <meta charset="utf-8"/>
+   
+    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+
+</h:head>
+
+<ui:define name="conteudo">
+	<h:form>
+    	   <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Cadastro Cliente</h1>
+                </div>
+            </div>
+			 <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Cadastro Cliente
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                	<table style="width: 100%;">
+										<tr>
+											<td> <h:outputLabel value="Nome:" /> </td>											
+											<td> <h:inputText value="#{cadastroMB.cliente.nome}" styleClass="form-control"/></td>
+										</tr> 
+										
+										<tr>
+											<td> <h:outputLabel value="CPF:" /> </td>											
+											<td> <h:inputText value="#{cadastroMB.cliente.cpf}" styleClass="form-control"/></td>
+										</tr>
+																		                             	
+                                	
+                                	</table>
+                                
+                                    <br/>    
+                                        <h:commandButton value="Salvar" actionListener="#{cadastroMB.inserir(cadastroMB.cliente)}" /> 
+                                 </div>                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+
+
+    <!-- jQuery -->
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="../bower_components/raphael/raphael-min.js"></script>
+    <script src="../bower_components/morrisjs/morris.min.js"></script>
+    <script src="../js/morris-data.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="../dist/js/sb-admin-2.js"></script>
+    
+    </h:form>
+
+</ui:define>
+
+</ui:composition>
