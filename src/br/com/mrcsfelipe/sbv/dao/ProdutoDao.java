@@ -9,6 +9,7 @@ public interface ProdutoDao {
 	public long salvarProduto(Produto p) throws Exception;
 	public boolean editarProduto(Produto p) throws Exception;
 	public boolean excluirProduto(Produto p) throws Exception;
+	public Produto getProdutoById(Long id) throws Exception;
 	public List<Produto> listarProduto(Produto p) throws Exception;
 
 }

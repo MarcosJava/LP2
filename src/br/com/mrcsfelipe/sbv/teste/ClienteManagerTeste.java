@@ -24,15 +24,15 @@ public class ClienteManagerTeste {
 		
 	}
 	
-
+	@Ignore
 	@Test
 	public void salvarClientexxxx(){
 		try {
-			Cliente cliente = 
-					new Cliente(null, 
-								"Marcos", 
-								"1306", 
-								"mfelipesp@gmail.com");
+			Cliente cliente = new Cliente(null, 
+										  "Marcos", 
+										  "233.345.987-09", 
+										  "123", 
+										  "markin");
 			
 			Long id = manager.salvarCliente(cliente);
 			
@@ -58,11 +58,11 @@ public class ClienteManagerTeste {
 		String saida = "";
 		
 		try {
-			Cliente cliente = 
-					new Cliente(null, 
-								"", 
-								"1306", 
-								"mfelipesp@gmail.com");
+			Cliente cliente = new Cliente(null, 
+					  "", 
+					  "233.345.987-09", 
+					  "123", 
+					  "markin");
 			
 			Long id = 0L;
 			
@@ -89,16 +89,18 @@ public class ClienteManagerTeste {
 	@Test//(expected = ClienteManagerException.class)
 	public void excluindoClienteIdZero(){
 		
-		Cliente c = new Cliente(0L, 
-								"maria", 
-								"123.332.123-02", 
-								"mariazinha@gmail.com");
+		Cliente cliente = new Cliente(0L, 
+				  "Marcos", 
+				  "233.345.987-09", 
+				  "123", 
+				  "markin");
 		
 		try {
-			manager.deletarCliente(c);
+			long id = manager.deletarCliente(cliente);
+			
+			System.out.println("ID QUE FOI DELETADO : " + id);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-			//e.printStackTrace();
 		}
 		
 		
@@ -108,16 +110,17 @@ public class ClienteManagerTeste {
 	@Test//(expected = ClienteManagerException.class)
 	public void excluindoClienteIdInexistente(){
 		
-		Cliente c = new Cliente(99999999L, 
-								"maria", 
-								"123.332.123-02", 
-								"mariazinha@gmail.com");
+		Cliente cliente = new Cliente(9999999999L, 
+				  "Marcos", 
+				  "233.345.987-09", 
+				  "123", 
+				  "markin");
 		
 		String saidaExperada = "ID inexistente";
 		String saidaScript = "";
 		
 		try {
-			manager.deletarCliente(c);
+			manager.deletarCliente(cliente);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			saidaScript = e.getMessage();

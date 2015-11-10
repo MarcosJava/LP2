@@ -24,8 +24,11 @@ public class ClienteManager {
 		} else if (c.getCpf() == null || c.getCpf().isEmpty()){
 			throw new ClienteManagerException("Preencher o cpf !");
 			
-		} else if (c.getEmail() == null || c.getEmail().isEmpty()){
-			throw new ClienteManagerException("Preencher o email !");
+		} else if (c.getLogin() == null || c.getLogin().isEmpty()){
+			throw new ClienteManagerException("Preencher o login !");
+			
+		} else if (c.getSenha() == null || c.getSenha().isEmpty()){
+			throw new ClienteManagerException("Preencher a senha !");
 			
 		} else {
 			return true;
@@ -50,12 +53,15 @@ public class ClienteManager {
 		return clienteDao.buscarClientePorId(id);
 	}
 	
-	public void deletarCliente(Cliente c) throws Exception{
+	public long deletarCliente(Cliente c) throws Exception{
+		long retorno = 0;
+		
 		if(c.getId() != null || c.getId() != 0){
-			clienteDao.deletarCliente(c);
+			retorno = clienteDao.deletarCliente(c);
 		} else {
 			throw new ClienteManagerException("Ocorreu um erro ao deletar. ID incorreto");
 		}
+		return retorno;
 	}
 
 }

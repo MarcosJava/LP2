@@ -15,10 +15,10 @@ public class Dao {
 	
 	protected void open() throws Exception{
 		
-		String url = "jdbc:postgresql://localhost:5432/trabalho";
+		String url = "jdbc:postgresql://localhost:5432/lp2a2";
 		//String user = "lp2";
 		//String pass = "eddy";
-		String user = "postgres" , password = "postgres";
+		String user = "postgres" , password = "marcos";
 		Class.forName("org.postgresql.Driver");
 		con = DriverManager.getConnection(url,user,password);
 	}

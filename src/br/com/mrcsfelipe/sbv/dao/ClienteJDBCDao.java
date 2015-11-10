@@ -13,18 +13,17 @@ public class ClienteJDBCDao extends Dao implements ClienteDao {
 	public long salvarCliente(Cliente c) throws Exception{
 		
 		long idObject = 0;
-		
-		
 		try {
 			open();
 			
 			stmt = con.prepareStatement("INSERT INTO "
-					+ "	cliente(nome, email, cpf) "
-					+ " values(?,?,?) returning id_cliente");
+					+ "	cliente(nome, cpf, login, senha) "
+					+ " values(?,?,?,?) returning id_cliente");
 			
 			stmt.setString(1, c.getNome());
-			stmt.setString(2, c.getEmail());
-			stmt.setString(3, c.getCpf()); 
+			stmt.setString(2, c.getCpf()); 
+			stmt.setString(3, c.getLogin());
+			stmt.setString(4, c.getSenha());
 			rs = stmt.executeQuery();
 			if(rs.next()){
 				idObject = rs.getLong("id_cliente");
@@ -45,7 +44,7 @@ public class ClienteJDBCDao extends Dao implements ClienteDao {
 		return 0;
 	}
 	
-	public void deletarCliente(Cliente c) throws Exception {
+	public long deletarCliente(Cliente c) throws Exception {
 		open();
 
 		stmt = con.prepareStatement("DELETE FROM cliente WHERE id_cliente=?");
@@ -57,6 +56,7 @@ public class ClienteJDBCDao extends Dao implements ClienteDao {
 		stmt.close();
 
 		close();
+		return deleteCount;
 	}
 
 	@Override
@@ -72,8 +72,9 @@ public class ClienteJDBCDao extends Dao implements ClienteDao {
 			while (rs.next()) {
 				cliente.setId(rs.getLong("id_cliente"));
 				cliente.setCpf(rs.getString("cpf"));
-				cliente.setEmail(rs.getString("email"));
 				cliente.setNome(rs.getString("nome"));
+				cliente.setLogin(rs.getString("login"));
+				cliente.setSenha(rs.getString("senha"));
 			}
 			stmt.close();
 			close();
@@ -99,10 +100,11 @@ public class ClienteJDBCDao extends Dao implements ClienteDao {
 		
 		while (rs.next()) {
 
-			Cliente c = new Cliente(rs.getLong("id_cliente"), 
+			Cliente c = new Cliente(rs.getLong("id_cliente"),
 									rs.getString("nome"), 
 									rs.getString("cpf"), 
-									rs.getString("email"));
+									rs.getString("senha"), 
+									rs.getString("login"));
 
 			listCliente.add(c);
 
@@ -112,6 +114,12 @@ public class ClienteJDBCDao extends Dao implements ClienteDao {
 
 		close();
 		return listCliente;
+	}
+
+	@Override
+	public Cliente editarCliente(Cliente c) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	
