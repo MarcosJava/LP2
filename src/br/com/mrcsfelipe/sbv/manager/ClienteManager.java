@@ -4,7 +4,7 @@ import java.util.List;
 
 import br.com.mrcsfelipe.sbv.dao.ClienteDao;
 import br.com.mrcsfelipe.sbv.dao.ClienteJDBCDao;
-import br.com.mrcsfelipe.sbv.exceptions.ClienteManagerException;
+import br.com.mrcsfelipe.sbv.exceptions.ManagerException;
 import br.com.mrcsfelipe.sbv.model.Cliente;
 
 public class ClienteManager {
@@ -18,17 +18,17 @@ public class ClienteManager {
 	public boolean hasData(Cliente c){
 		
 		if(c.getNome() == null || c.getNome().isEmpty()){
-			throw new ClienteManagerException("Preencher o nome !");
+			throw new ManagerException("Preencher o nome !");
 			
 			
 		} else if (c.getCpf() == null || c.getCpf().isEmpty()){
-			throw new ClienteManagerException("Preencher o cpf !");
+			throw new ManagerException("Preencher o cpf !");
 			
 		} else if (c.getLogin() == null || c.getLogin().isEmpty()){
-			throw new ClienteManagerException("Preencher o login !");
+			throw new ManagerException("Preencher o login !");
 			
 		} else if (c.getSenha() == null || c.getSenha().isEmpty()){
-			throw new ClienteManagerException("Preencher a senha !");
+			throw new ManagerException("Preencher a senha !");
 			
 		} else {
 			return true;
@@ -54,7 +54,7 @@ public class ClienteManager {
 		if(hasId(c)){
 			return clienteDao.editarCliente(c);
 		}
-		throw new ClienteManagerException("Ocorreu um erro ao editar Cliente");
+		throw new ManagerException("Ocorreu um erro ao editar Cliente");
 		
 	}
 	
@@ -70,7 +70,7 @@ public class ClienteManager {
 	public Cliente getClienteById(long id) throws Exception{
 		if(id > 0)
 			return clienteDao.buscarClientePorId(id);
-		throw new ClienteManagerException("Informe um ID");
+		throw new ManagerException("Informe um ID");
 	}
 	
 	public long deletarCliente(Cliente c) throws Exception{
@@ -79,7 +79,7 @@ public class ClienteManager {
 		if(c.getId() != null || c.getId() > 0){
 			retorno = clienteDao.deletarCliente(c);
 		} else {
-			throw new ClienteManagerException("Ocorreu um erro ao deletar. ID incorreto");
+			throw new ManagerException("Ocorreu um erro ao deletar. ID incorreto");
 		}
 		return retorno;
 	}

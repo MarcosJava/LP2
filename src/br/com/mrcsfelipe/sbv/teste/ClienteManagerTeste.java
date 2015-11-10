@@ -8,7 +8,7 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import br.com.mrcsfelipe.sbv.exceptions.ClienteManagerException;
+import br.com.mrcsfelipe.sbv.exceptions.ManagerException;
 import br.com.mrcsfelipe.sbv.manager.ClienteManager;
 import br.com.mrcsfelipe.sbv.model.Cliente;
 
@@ -68,7 +68,7 @@ public class ClienteManagerTeste {
 			
 			try{
 				id = manager.salvarCliente(cliente);
-			}catch(ClienteManagerException e){
+			}catch(ManagerException e){
 				System.out.println(e);
 				//e.printStackTrace();
 				saida = e.getMessage();

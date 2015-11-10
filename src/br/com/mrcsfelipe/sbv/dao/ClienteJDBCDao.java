@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.mrcsfelipe.sbv.exceptions.ClienteManagerException;
+import br.com.mrcsfelipe.sbv.exceptions.ManagerException;
 import br.com.mrcsfelipe.sbv.model.Cliente;
 
 
@@ -52,7 +52,7 @@ public class ClienteJDBCDao extends Dao implements ClienteDao {
 		stmt.setLong(1, c.getId());
 		int deleteCount = stmt.executeUpdate();
 		if(deleteCount == 0){
-			throw new ClienteManagerException("ID inexistente");
+			throw new ManagerException("ID inexistente");
 		}
 		stmt.close();
 
@@ -140,7 +140,7 @@ public class ClienteJDBCDao extends Dao implements ClienteDao {
 			return c;
 			
 		} catch (SQLException e) {
-			throw new ClienteManagerException(e.getMessage());
+			throw new ManagerException(e.getMessage());
 			
 		}finally{
 			close();
