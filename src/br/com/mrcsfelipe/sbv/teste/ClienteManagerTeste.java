@@ -145,5 +145,24 @@ public class ClienteManagerTeste {
 	
 	
 	
+	@Test
+	public void editandoCliente(){
+		
+		long idForEdit = 4;
+		try {
+			
+			Cliente c = new Cliente(idForEdit, "Joao", "999.999.999-99", "1234", "John");
+			Cliente cBefore = manager.editarCliente(c);
+			
+			System.out.println("EDITOU O CLIENTE  = " + cBefore);
+			
+			assertEquals(c, cBefore);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
 
 }

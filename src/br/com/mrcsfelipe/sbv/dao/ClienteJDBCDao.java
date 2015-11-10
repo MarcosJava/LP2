@@ -1,5 +1,6 @@
 package br.com.mrcsfelipe.sbv.dao;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -118,8 +119,32 @@ public class ClienteJDBCDao extends Dao implements ClienteDao {
 
 	@Override
 	public Cliente editarCliente(Cliente c) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		
+		try {
+			open();
+			
+			stmt = con.prepareStatement("UPDATE cliente SET "
+					+ "	nome = ?, cpf = ?, login = ?, senha = ? "
+					+ " WHERE id_cliente = ?");
+			
+			
+			stmt.setString(1, c.getNome());
+			stmt.setString(2, c.getCpf()); 
+			stmt.setString(3, c.getLogin());
+			stmt.setString(4, c.getSenha());
+			stmt.setLong(5,  c.getId());
+			stmt.execute();
+			
+			stmt.close();
+			close();
+			return c;
+			
+		} catch (SQLException e) {
+			throw new ClienteManagerException(e.getMessage());
+			
+		}finally{
+			close();
+		}
 	}
 	
 	

@@ -49,14 +49,34 @@ public class ClienteManager {
 		return 0;
 	}
 	
+	public Cliente editarCliente(Cliente c) throws Exception{
+		
+		if(hasId(c)){
+			return clienteDao.editarCliente(c);
+		}
+		throw new ClienteManagerException("Ocorreu um erro ao editar Cliente");
+		
+	}
+	
+	private boolean hasId(Cliente c) {
+		if(c.getId() != null
+				|| c.getId() > 0 ){
+			
+			return true;
+		}
+		return false;
+	}
+
 	public Cliente getClienteById(long id) throws Exception{
-		return clienteDao.buscarClientePorId(id);
+		if(id > 0)
+			return clienteDao.buscarClientePorId(id);
+		throw new ClienteManagerException("Informe um ID");
 	}
 	
 	public long deletarCliente(Cliente c) throws Exception{
 		long retorno = 0;
 		
-		if(c.getId() != null || c.getId() != 0){
+		if(c.getId() != null || c.getId() > 0){
 			retorno = clienteDao.deletarCliente(c);
 		} else {
 			throw new ClienteManagerException("Ocorreu um erro ao deletar. ID incorreto");
