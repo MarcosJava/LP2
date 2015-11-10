@@ -17,7 +17,6 @@ public class CadastroMB {
 	
 	@PostConstruct
 	public void init(){
-		System.out.println("Teste");
 		cliente = new Cliente();
 		
 	}
@@ -32,9 +31,6 @@ public class CadastroMB {
 		cliente = new Cliente();
 	}
 	
-	public void teste(){
-		System.out.println("aaaaaaaaa");
-	}
 
 	
 	//xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx GETTERs e SETTERs xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx//
